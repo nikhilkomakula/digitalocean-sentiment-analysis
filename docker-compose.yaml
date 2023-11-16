@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    image: nikhilkomakula/test-do-sentiment-analysis
+    container_name: test-do-sentiment-analysis
+    ports:
+      - 3000:3000
