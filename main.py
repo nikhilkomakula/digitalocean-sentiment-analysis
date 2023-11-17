@@ -11,11 +11,11 @@ from nltk.stem import WordNetLemmatizer
 from keras_preprocessing.sequence import pad_sequences
 
 # download wordnet, stopwords, omw
-# nltk.download('stopwords')
-# stopwords = stopwords.words('english')
-# nltk.download('wordnet')
-# nltk.download('omw-1.4')
-# lemmatizer = WordNetLemmatizer()
+nltk.download('stopwords')
+stopwords = stopwords.words('english')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+lemmatizer = WordNetLemmatizer()
 
 # function to load models
 def load_models():
@@ -34,10 +34,10 @@ def preprocess_text(text, lemmatize=False):
     text = re.sub(constants.TEXT_PREPROCESS_RE, ' ', str(text).lower()).strip()
     tokens = []
     for token in text.split():
-        # if token not in stopwords:
-        #     if lemmatize:
-        #         tokens.append(lemmatizer.lemmatize(token))
-        #     else:
+        if token not in stopwords:
+            if lemmatize:
+                tokens.append(lemmatizer.lemmatize(token))
+            else:
                 tokens.append(token)
     return ' '.join(tokens)
 
